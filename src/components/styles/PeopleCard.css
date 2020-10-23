@@ -1,0 +1,83 @@
+.people-card{
+  height: 200px;
+  width: 200px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, #ffffff00, #ffffff33);
+}
+
+.people-card-status{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.people-card-status p{
+  align-self: flex-end;
+  margin-right: 10px;
+  font-size: 10pt;
+  color: #4CAF50;
+}
+
+.people-card-status-avatar{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  overflow: hidden;
+  border: 4px solid #4CAF50;
+  align-self: center;
+}
+
+.people-card-status-avatar img{
+  width: 100%;
+  height: auto;
+}
+
+@supports(object-fit: cover){
+  .people-card-status-avatar img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+.people-card-id{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.people-card-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.people-card-bottom p{
+  font-size: 10pt;
+}
+
+.people-card-bottom-hours{
+  margin-right: 10px;
+}
+
+.people-card-acces-btn{
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  margin-left: 10px;
+  font-size: 10pt;
+  background-color: #ffffff00;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

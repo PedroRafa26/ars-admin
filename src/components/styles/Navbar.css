@@ -1,11 +1,21 @@
 .Navbar{
     width: 100%;
     padding: 0.5rem 0;
-    background-color: dodgerblue;
+    background-color: #ffffff00;
 }
 .Navbar-items{
     color: white;
     display: flex;
     align-items: center;
+    justify-content: space-around;
+}
+
+.title{
+    display: flex;
     justify-content: center;
+    margin-top: 10px;
+    color: white;
+    font-size: 30pt;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
 }

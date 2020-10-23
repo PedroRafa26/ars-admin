@@ -1,0 +1,103 @@
+.logbookSection{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  width: 720px;
+  height: 80vh;
+  align-items: center;
+}
+
+.logbookSection-body{
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.logbookSection-selector{
+  margin: 10px 5px 0px 5px;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.logbookSection-selector-item{
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.none-selected{
+  background-color: #ffffff22;
+  font-weight: thin;
+}
+
+.selected{
+  background-color: #ffffff77;
+  font-weight: bold;
+}
+
+.first{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.last{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.logbookSection-selector p{
+  font-size: 7pt;
+}
+
+.logbookSection-header{
+  display: flex;
+  margin-top: 30px;
+  width: 680px;
+  margin: 10px 10px;
+}
+
+.logbookSection-header div{
+  display: flex;
+  flex: 1 1 0;
+  justify-content: center;
+  text-align: center;
+  border-left: 1px solid #ffffff77;
+  border-right: 1px solid #ffffff77;
+  margin-top: 10px
+}
+
+
+.logbookSection-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.logbookSection-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.logbookSection-body::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.logbookSection-body::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+.logbookSection-body::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+/* Cambiamos el fondo cuando esté en active o hover */
+.logbookSection-body::-webkit-scrollbar-track:hover,
+.logbookSection-body::-webkit-scrollbar-track:active {
+background: #d4d4d4;
+}

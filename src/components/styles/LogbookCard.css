@@ -1,0 +1,43 @@
+.logbook-container{
+  margin-top: 20px;
+}
+
+.logbook-card{
+  display: flex;
+  flex-direction: column;
+  width: 680px;
+  margin: -10px 10px;
+  background-color: #ffffff4c;
+  border-radius: 15px;
+}
+
+.logbook-card-item{
+  display: flex;
+}
+
+.border-bottom{
+  border-bottom: 2px solid #ffffff9f;
+}
+
+.logbook-card-item-section{
+  display: flex;
+  flex: 1 1 0;
+  font-size: 9pt;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  margin: 12px 10px;
+}
+
+.logbook-card-item-separator{
+  height: 20px;
+}
+
+.logbook-card-date{
+  background-color: #00329C;
+  display: inline-block;
+  bottom: 10px;
+  font-size: 10pt;
+  padding: 10px;
+  border-radius: 5px;
+}

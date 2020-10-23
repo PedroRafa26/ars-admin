@@ -17,6 +17,7 @@ class Navbar extends React.Component{
                         Editar
                     </Link>
                 </div>
+                <div className="title">ARS Mobile Panel administrativo</div>
             </div>
         )
     }

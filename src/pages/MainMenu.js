@@ -1,15 +1,20 @@
-import React from 'react';
+import React from "react";
+import MenuColumn from "../components/MenuColumn";
+import {ArsUserId} from "../const";
+import './styles/MainMenu.css'
 
 const MainMenu = ({logout}) => {
+    var admin = false;
+    // console.log(user.uid);
+    // console.log(user.uid === ArsUserId);
+    // admin = user.uid === ArsUserId;
 
-        return (
-            <div>
-                <h1>
-                    Bienvenido al panel administrativo de ARS Mobile
-                </h1>
-                <button onClick={logout}>Logout</button>
-            </div>
-        )
-    } 
+    return (
+        <div className="mainMenu">
+        <h4 className="mainMenu-companyName">Nombre de la empresa</h4>
+            <MenuColumn />
+        </div>
+    );
+};
 
 export default MainMenu;
