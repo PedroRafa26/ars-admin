@@ -1,11 +1,11 @@
 .Navbar{
     width: 100%;
     padding: 0.5rem 0;
-    background-color: dodgerblue;
+    background-color: #00022d;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 .Navbar-items{
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
