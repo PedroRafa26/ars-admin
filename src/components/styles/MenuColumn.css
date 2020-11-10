@@ -1,0 +1,55 @@
+.Menu-Container{
+  display: flex;
+  min-height: 80vh;
+  margin: 20px 40px;
+  box-shadow: 0px 0px 5px 5px #ffffff25;
+  border-radius: 30px;
+}
+
+.column{
+  transition: .3s ease-in-out;
+  border-right: 2px solid #ffffff22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.none{
+  flex-grow: 1;
+}
+
+.focus{
+  flex-grow: 13;
+}
+
+.away{
+  flex-grow: 4;
+}
+.farAway{
+  flex-grow: 2;
+
+}
+.farFarAway{
+  flex-grow: 1;
+}
+
+.cars{
+  color:white;
+  background: linear-gradient(to right, #00022D, #000B52);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+.people{
+  color: white;
+  background: linear-gradient(to right, #000B52, #001F77);
+}
+.logbook{
+  color: white;
+  background: linear-gradient(to right, #001F77, #00329C);
+}
+.assets{
+  color: white;
+  background: linear-gradient(to right, #00329C, #0046BB);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}

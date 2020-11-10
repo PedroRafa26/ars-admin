@@ -1,0 +1,41 @@
+.peopleSection{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  height: 450px;
+  width: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.peopleSection::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.peopleSection::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.peopleSection::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+/* Cambiamos el fondo cuando esté en active */
+.peopleSection::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+.peopleSection::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+/* Cambiamos el fondo cuando esté en active o hover */
+.peopleSection::-webkit-scrollbar-track:hover,
+.peopleSection::-webkit-scrollbar-track:active {
+background: #d4d4d4;
+}
