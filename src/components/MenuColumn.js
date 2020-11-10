@@ -1,7 +1,7 @@
 import React from "react";
-import CarsSection from "./CarsSection";
-import LogbookSection from "./LogbookSection";
-import PeopleSection from "./PeopleSection";
+import CarsSection from "./cars/CarsSection";
+import LogbookSection from "./logbook/LogbookSection";
+import PeopleSection from "./people/PeopleSection";
 import "./styles/MenuColumn.css";
 
 class MenuColumn extends React.Component {

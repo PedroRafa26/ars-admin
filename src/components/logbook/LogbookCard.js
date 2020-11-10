@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/LogbookCard.css";
-import Event from "../models/event";
-import myImage from "../assets/images/0.jpg";
+import Event from "../../models/event";
+import myImage from "../../assets/images/0.jpg";
 
 const LogbookCard = (props) => {
     let events = [

@@ -11,16 +11,6 @@ class CarsSection extends React.Component{
         <CarsCard/>
         <CarsCard/>
         <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/><CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
-        <CarsCard/>
       </div>
     )
   }

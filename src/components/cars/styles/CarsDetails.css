@@ -1,0 +1,55 @@
+input{
+  margin: 2px 15px;
+  padding: 2px 5px;
+}
+
+select{
+  margin: 2px 15px;
+  padding: 2px 5px;
+}
+
+
+.cars-details-editableInfo-item{
+  display: flex;
+}
+
+.editable-title{
+  text-align: left;
+}
+
+/* .editable-selection{
+  justify-self: flex-end;
+} */
+
+.cars-details-editableInfo-item div{
+  flex-grow: 1;
+  align-self: start;
+}
+
+.cars-details-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.cars-details-editableInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+.cars-details-container-kilometraje{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.kilometrosTitle{
+  margin-left: 30px;
+}
+
+.cars-details-container-buttonSection button{
+  margin: 4px 0px;
+  border-radius: 50px;
+}
+
+

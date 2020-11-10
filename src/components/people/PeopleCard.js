@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/PeopleCard.css";
-import myImage from "../assets/images/0.jpg";
+import myImage from "../../assets/images/0.jpg";
 
 const PeopleCard = (props) => {
     return (
@@ -16,10 +16,10 @@ const PeopleCard = (props) => {
                 <h6>Gerente de almacén</h6>
             </div>
             <div className="people-card-bottom">
-              <div className="people-card-bottom-hours">
-                <p>Entrada: 8:00 am</p>
-                <p>Salida: 5:00 pm</p>
-              </div>
+                <div className="people-card-bottom-hours">
+                    <p>Entrada: 8:00 am</p>
+                    <p>Salida: 5:00 pm</p>
+                </div>
                 <button className="people-card-acces-btn">Ver</button>
             </div>
         </div>
