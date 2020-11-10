@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './styles/Navbar.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./styles/Navbar.css";
 
 class Navbar extends React.Component{
     render() {
@@ -23,4 +23,4 @@ class Navbar extends React.Component{
     }
 }
 
-export default Navbar
+export default Navbar;
