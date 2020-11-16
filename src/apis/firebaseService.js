@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import "firebase/auth";
 import 'firebase/storage';
 import 'firebase/firestore';
-import firebaseConfig from './config'
+import {firebaseConfig} from './config'
 
 const mainApp = firebase.initializeApp(firebaseConfig)
 
@@ -36,7 +36,7 @@ class AuthServiceClass {
     const user = await this.authInstance.signInWithEmailAndPassword(email, password).catch((e) => {
       error = e;
     });
-
+    // debugger
     return {user, error};
   }
 
@@ -86,16 +86,17 @@ class AuthServiceClass {
 
   async signOut(){
     const error = await this.authInstance.signOut();
-
+    // console.log(error);
     return { error };
   }
-  
+
   authPersistence(setUser){
     this.authInstance.onAuthStateChanged((user) => {
+      // debugger
       if (user) {
         setUser(user);
       }else{
-        setUser({uid: 'none', email: '', phoneNumber: ''});
+        setUser("");
       }
     });
   }

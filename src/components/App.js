@@ -1,22 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Layout from './Layout';
 import Main from '../pages/Main';
-import MainAdmin from '../pages/MainAdmin';
-import { useFirebaseApp } from 'reactfire';
+import CreateUser from '../pages/CreateUser';
 
 
 function App() {
-  const firebase = useFirebaseApp();
-    console.log(firebase);
   return(
     <BrowserRouter>
-      <Layout>
         <Switch>
           <Route exact path='/' component={Main} />
-          <Route exact path='/admin' component={MainAdmin} />
+          <Route exact path='/create' component={CreateUser} />
         </Switch>
-      </Layout>
     </BrowserRouter>
   )
 }

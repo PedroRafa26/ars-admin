@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Auth from "../components/Auth";
-import fire from "../fire";
 import MainMenu from "./MainMenu";
+import {AuthService} from "../apis/firebaseService";
+import Layout from "../components/Layout";
 
 const Main = () => {
     const [user, setUser] = useState("");
@@ -9,7 +10,6 @@ const Main = () => {
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [hasAccount, setHasAccount] = useState(true);
 
     const clearInputs = () => {
         setEmail("");
@@ -21,85 +21,95 @@ const Main = () => {
         setPasswordError("");
     };
 
-    const login = () => {
+    const login = async () => {
         clearErrors();
-        fire.auth()
-            .signInWithEmailAndPassword(email, password)
-            .catch((err) => {
-                switch (err.code) {
-                    case "auth/invalid-email":
-                    case "auth/user-disabled":
-                    case "auth/user-not-found":
-                        setEmailError(err.message);
-                        break;
-                    case "auth/wrong-password":
-                        setPasswordError(err.message);
-                        break;
-                }
-            });
+        const {user, error} = await AuthService.SignInWithEmailAndPassword({
+            email,
+            password
+        });
+        console.log(user);
+        console.log(error);
+        if (error) {
+            switch (error.code) {
+                case "auth/invalid-email":
+                case "auth/user-disabled":
+                case "auth/user-not-found":
+                    setEmailError(error.message);
+                    break;
+                case "auth/wrong-password":
+                    setPasswordError("Usuario o contraseña incorrectos");
+                    break;
+                default:
+                    setPasswordError("");
+                    setEmailError("");
+            }
+        }
+        // debugger
+        setUser(user.user);
     };
 
-    const signUp = () => {
-        clearErrors();
-        fire.auth()
-            .createUserWithEmailAndPassword(email, password)
-            .catch((err) => {
-                switch (err.code) {
-                    case "auth/email-already-in-use":
-                    case "auth/invalid-email":
-                        setEmailError(err.message);
-                        break;
-                    case "auth/weak-password":
-                        setPasswordError(err.message);
-                        break;
-                }
-            });
-    };
+    // const signUp = () => {
+    //     clearErrors();
+    //     fire.auth()
+    //         .createUserWithEmailAndPassword(email, password)
+    //         .catch((err) => {
+    //             switch (err.code) {
+    //                 case "auth/email-already-in-use":
+    //                 case "auth/invalid-email":
+    //                     setEmailError(err.message);
+    //                     break;
+    //                 case "auth/weak-password":
+    //                     setPasswordError(err.message);
+    //                     break;
+    //             }
+    //         });
+    // };
 
-    const logout = () => {
-        fire.auth().signOut();
-    };
+    // const logout = () => {
+    //     fire.auth().signOut();
+    // };
 
     //Listener para verificar el cambio de estado
-    const authListener = () => {
-        fire.auth().onAuthStateChanged((user) => {
-            if (user) {
-                clearInputs();
-                setUser(user);
-            } else {
-                setUser("");
-            }
-        });
-    };
+    // const authListener = () => {
+    //     fire.auth().onAuthStateChanged((user) => {
+    //         if (user) {
+    //             clearInputs();
+    //             setUser(user);
+    //         } else {
+    //             setUser("");
+    //         }
+    //     });
+    // };
 
     useEffect(() => {
-        authListener();
+        AuthService.authPersistence(setUser);
+        // debugger
+        // console.log(user);
     }, []);
 
     return (
         <div>
-            {/* {user ? (
-            <MainMenu
-                logout={logout}
-                user={user}
-            />
-        ):(
-            <div className="Main">
-            <Auth
-                email={email}
-                setEmail={setEmail}
-                password={password}
-                setPassword={setPassword}
-                login={login}
-                signUp={signUp}
-                hasAccount={hasAccount}
-                setHasAccount={setHasAccount}
-                emailError={emailError}
-                passwordError={passwordError}
-            />
-        </div>
-        )} */}
-            <MainMenu logout={logout} />
+            {user ? (
+                <Layout
+                    setUser={setUser}
+                >
+                    <MainMenu user={user} />
+                </Layout>
+            ) : (
+                <div className="Main">
+                    <Auth
+                        user={user}
+                        setUser={setUser}
+                        email={email}
+                        setEmail={setEmail}
+                        password={password}
+                        setPassword={setPassword}
+                        login={login}
+                        emailError={emailError}
+                        passwordError={passwordError}
+                    />
+                </div>
+            )}
         </div>
     );
 };

@@ -26,6 +26,7 @@
   }
   
   .login .loginContainer {
+    color: white;
     padding: 60px;
     margin: auto;
     width: 100%;
@@ -41,6 +42,10 @@
       rgba(17, 27, 75, 0.9) 100%
     );
     box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  .login .loginContainer h1{
+    text-align: center;
   }
   
   .login .loginContainer label {
@@ -73,7 +78,7 @@
     color: #fff;
   }
   
-  .login .loginContainer .btnContainer p span {
+  .login .loginContainer .btnContainer .btnRegistry {
     color: yellow;
     font-weight: 500;
     letter-spacing: 0.5px;

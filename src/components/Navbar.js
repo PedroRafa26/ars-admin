@@ -1,26 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import {AuthService} from "../apis/firebaseService"
 import "./styles/Navbar.css";
 
-class Navbar extends React.Component{
-    render() {
-        return (
-            <div className="Navbar">
-                <div className="Navbar-items">
-                    <Link to="/" >
-                        Principal
-                    </Link>
-                    <Link to="/add" >
-                        Agregar
-                    </Link>
-                    <Link to="/edit" >
-                        Editar
-                    </Link>
-                </div>
-                <div className="title">ARS Mobile Panel administrativo</div>
-            </div>
-        )
+const Navbar = (props) => {
+
+    const logout = async()=>{
+        console.log("Inicio del loguot");
+        let {error} = await AuthService.signOut()
+        console.log(error);
     }
-}
+
+    // useEffect(() => {
+    //     AuthService.authPersistence(props.setUser);
+    // }, []);
+
+    return (
+        <div className="Navbar">
+            <div className="titleNavbar">
+            ARS Mobile Panel administrativo
+            </div>
+            <div className="NavbarButton">
+                <button onClick={logout}>Cerrar sesión</button>
+            </div>
+        </div>
+    );
+};
 
 export default Navbar;

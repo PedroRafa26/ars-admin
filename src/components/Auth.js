@@ -1,35 +1,58 @@
-import React from 'react'
-import './styles/Auth.css'
+import React from "react";
+import "./styles/Auth.css";
+import {AuthService} from "../apis/firebaseService";
+import { Link } from "react-router-dom";
 
 const Auth = (props) => {
-
-    const { email, setEmail, password, setPassword, login, signUp, hasAccount, setHasAccount, emailError, passwordError } = props 
+    const {
+        user,
+        setUser,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        login,
+        emailError,
+        passwordError
+    } = props;
 
     return (
         <section className="login">
             <div className="loginContainer">
+                <h1>
+                    ARS Mobile <br /> Panel Administrativo
+                </h1>
                 <label>Correo</label>
-                <input type="text" autofocus required value={email} onChange={e => setEmail(e.target.value)} />
+                <input
+                    type="text"
+                    autoFocus
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
                 <p className="errorMsg">{emailError}</p>
                 <label>Contraseña</label>
-                <input type="password" autofocus required value={password} onChange={e => setPassword(e.target.value)} />
+                <input
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <p className="errorMsg">{passwordError}</p>
                 <div className="btnContainer">
-                    {hasAccount ?(
-                        <>
+                    <>
                         <button onClick={login}>Ingresar</button>
-                        <p>¿La empresa no está registrada? <span onClick={()=>setHasAccount(!hasAccount)}>Registrar</span></p>
-                        </>
-                    ):(
-                        <>
-                        <button onClick={signUp}>Registrar</button>
-                        <p>¿La empresa ya está registrada? <span onClick={()=>setHasAccount(!hasAccount)}>Acceder</span></p>
-                        </>
-                    )}    
-                     </div>
+                        <p>
+                            ¿La empresa no está registrada?{" "}
+                            <Link className="btnRegistry" to="/create">
+                                Registrar
+                            </Link>
+                        </p>
+                    </>
+                </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Auth
+export default Auth;
