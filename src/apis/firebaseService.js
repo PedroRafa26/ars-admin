@@ -183,6 +183,12 @@ class FireStoreServiceClass{
     return doc.data();
   }
 
+  async getCollection(collection){
+    const collections = await this.Firestore.collection(collection).get()
+    // debugger
+    return collections;
+  }
+
   async getDocWithID(collection, documentPath){
     const doc = await this.Firestore.collection(collection).doc(documentPath).get();
     return {

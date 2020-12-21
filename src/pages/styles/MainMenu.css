@@ -6,6 +6,8 @@
 
 .mainMenu-companyName{
   color: white;
+  padding-top: 10px;
+  font-size: 20pt;
   display: flex;
   align-self: center;
 }

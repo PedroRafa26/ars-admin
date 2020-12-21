@@ -14,10 +14,16 @@ const Auth = (props) => {
         login,
         emailError,
         passwordError
-    } = props;
+		} = props;
+		
+	const handleSubmit = event =>{
+		event.preventDefault()
+		login()
+	}
 
     return (
-        <section className="login">
+        <section >
+          <form className="login" onSubmit={handleSubmit}>
             <div className="loginContainer">
                 <h1>
                     ARS Mobile <br /> Panel Administrativo
@@ -41,7 +47,7 @@ const Auth = (props) => {
                 <p className="errorMsg">{passwordError}</p>
                 <div className="btnContainer">
                     <>
-                        <button onClick={login}>Ingresar</button>
+                        <button type="submit">Ingresar</button>
                         <p>
                             ¿La empresa no está registrada?{" "}
                             <Link className="btnRegistry" to="/create">
@@ -51,6 +57,7 @@ const Auth = (props) => {
                     </>
                 </div>
             </div>
+					</form>
         </section>
     );
 };

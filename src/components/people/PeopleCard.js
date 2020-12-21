@@ -8,7 +8,7 @@ const PeopleCard = (props) => {
             <div className="people-card-status">
                 <p>En Oficina</p>
                 <div className="people-card-status-avatar">
-                    <img src={myImage} />
+                    <img src={myImage} alt="PersonImage"/>
                 </div>
             </div>
             <div className="people-card-id">

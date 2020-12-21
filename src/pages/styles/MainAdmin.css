@@ -1,28 +1,33 @@
-.container{
+.MainAdmin{
+    display:flex;
+    flex-direction: column;
+}
+
+.MainAdmin-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 103vmin;
+    height: 80vmin;
     background-color: #00022d;
     /*TODO: Agregar degradado*/
 }
 
-.title{
+.MainAdmin-title{
     color: white;
-    font-size: 30pt;
+    font-size: 25pt;
     padding: 0px 40px 40px 40px;
     text-align: center;
 }
 
-.subtitle{
+.MainAdmin-subtitle{
     color: white;
     font-size: 15pt;
     padding: 20px;
-    text-align: center;   
+    text-align: center;
 }
 
-.selection{
+.MainAdmin-selection{
     background-color: #00064e;
     border-radius: 50px;
     /*TODO: Agregar sombra*/
@@ -34,13 +39,13 @@
     width: 648px;
 }
 
-.selection-list{
+.MainAdmin-selection-list{
     background-color: #00022d80;
     height: 315px;
     width: 550px;
 }
 
-.selection-item{
+.MainAdmin-selection-item{
     height: 50px;
     width: 550px;
     display: flex;
@@ -58,7 +63,7 @@
     background-color: #ffffff15;
 }
 
-.btn-add{
+.MainAdmin-btn-add{
     color: #00064e;
     font-weight: 600;
     background-color: #ffffff99 ;
@@ -67,7 +72,7 @@
     border-radius: 5px;
 }
 
-.logo{
+.MainAdmin-logo{
     margin: 10px;
     height: 100px;
     width: 100px;

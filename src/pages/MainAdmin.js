@@ -1,53 +1,116 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles/MainAdmin.css";
-import {AuthService} from "../apis/firebaseService"
-
+import { FireStoreService } from "../apis/firebaseService";
+import Swal from "sweetalert2";
+import MainAdminListItem from "./MainAdminList";
+import Layout from "../components/Layout";
 
 const MainAdmin = () => {
-    var empresaSelected;
-    var empresas = ["Sermapaca C.A.", "Serdisur C.A.", "AR Servicios C.A."];
+	const [loading, setLoading] = useState(true);
 
-    var construccion = () => {
-        console.log("seccion en construcción");
-        alert("seccion en Construcción")
-    };
+	// * Como buena práctica, si no piensa usar conditional render declare el estado inicial del mismo}
+	// * tipo que el componente hijo espera.
 
-    //TODO: Manejar el navegar enviando el uid
-    var navigate = (index) => {
-        empresaSelected = empresas[index];
-        console.log(empresaSelected);
-    };
+	const [empresas, setEmpresas] = useState([]);
 
-    return (
-        <div className="container">
-            <div className="title">
-                Bienvenido al panel administrativo de ARS Mobile
-            </div>
-            <div className="selection">
-                <div className="subtitle">Selecciona una Empresa</div>
-                <div className="selection-list">
-                    {empresas.map((item, index) => {
-                        var parimpar;
-                        parimpar = index % 2 === 0 ? "par" : "impar";
-                        return (
-                            <div
-                                className={"selection-item " + parimpar}
-                                onClick={navigate(index)}
-                            >
-                                {item}
-                            </div>
-                        );
-                    })}
-                </div>
-                <div>
-                    <button className="btn-add" onClick={construccion}>
-                        Nueva Empresa
-                    </button>
-                </div>
-            </div>
-            <div className="logo"></div>
-        </div>
-    );
+	// ! USAR INDEXADO DE 2 ESSPACIOS!!
+	// * Los valores asíncrons deben ser manejados con useffect, son la mejor
+	// * manera de llevar el control de los renders en un componente.
+
+	useEffect(() => {
+		// * A pesar de que useeffect usa una función como argumento, no soporta
+		// * que la función sea asíncrona. Así que hay que declararla y llamarla adentro.
+		// * Sé que se podría poner fancy y querer declararla por fuera, eso tiene ventajas y
+		// * desventajas. La función sería accesible en otros lados del archivo, pero
+		// * sería necesaria en el array de dependencias del useffect, puede agregarla al array
+		// * pero si no la ubica en un useCallback debidamente armado podría provocarle renders infinitos
+		// * Para más informacion visita www.DNL_react.com
+
+		const getEmpresas = async () => {
+			// * Si no piensa cambiar los valores de una variable, fácilmente puede usar const en lugar de let.
+			// * Tienen el mismo comportamiento con el scope.
+
+			try {
+				// setLoading(true);
+				console.log("inicializando variablesss");
+				const collections = await FireStoreService.getCollection("users");
+				// debugger;
+				return collections.docs.map(doc => {
+					const key = doc.id;
+					const data = doc.data();
+					return {
+						key,
+						...data
+					};
+				});
+				// setLoading(stop);
+				// debugger;
+				// return responseEmpresas;
+			} catch (err) {
+				console.log("Something happened", err);
+				throw err;
+			}
+		};
+
+		// * Como último punto, tengo entendido que los setState dentro de los useffect
+		// * son recomendados ponerlos en su forma de function argumento (ahora mismo no recuerdo
+		// * el por qué).
+
+		getEmpresas()
+			.then(result => {
+				// debugger;
+				setEmpresas(() => result);
+				setLoading(false);
+			})
+			.catch(err => {
+				console.log("error", err);
+			});
+	}, []);
+
+	let swalConstruction = () => {
+		Swal.fire({
+			text: "Seccion en construcción"
+		});
+	};
+
+	// debugger
+	return (
+		<Layout>
+			<div className="MainAdmin">
+				<div className="MainAdmin-container">
+					<div className="MainAdmin-title">Bienvenido</div>
+					<div className="MainAdmin-selection">
+						<div className="MainAdmin-subtitle">Selecciona una Empresa</div>
+						<div className="MainAdmin-selection-list">
+							{/* <MainAdminList empresas={empresas}/> */}
+							{!loading &&
+								empresas.map(({ name, key }, index) => {
+									let parimpar;
+									parimpar = index % 2 === 0 ? "par" : "impar";
+									{
+										/* debugger */
+									}
+									return (
+										<MainAdminListItem
+											key={key}
+											name={name}
+											parimpar={parimpar}
+										/>
+									);
+								})}
+							{loading && <div> Cargando</div>}
+						</div>
+						<div>
+							<button className="MainAdmin-btn-add" onClick={swalConstruction}>
+								Nueva Empresa
+							</button>
+						</div>
+					</div>
+					{/* <div className="MainAdmin-logo"></div> */}
+				</div>
+			</div>
+		</Layout>
+	);
 };
 
-export default MainAdmin;
+export default React.memo(MainAdmin);
