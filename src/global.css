@@ -10,3 +10,56 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root{
+  --fw-light: 400;
+  --fw-regular: 500;
+  --fw-bold: 700;
+
+
+  --clr-primary85: #00022dCC;
+  --clr-primary60: #00022d99;
+  --clr-primary50: #00022d80;
+  --clr-primary35: #00022d59;
+  --clr-primary20: #00022d33;
+  --clr-primary: #00022d;
+  --clr-secondary: #C4C4C4;
+  --clr-background: #F9F9F9;
+  --clr-error: #F20000;
+  --clr-black: #000000;
+
+  --clr-grey-Strong: #626262;
+  --clr-grey-light: #c8cdc7;
+
+  --fs-Logo: 4rem;
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: .8rem;
+  --fs-ultra-small: .8rem;
+
+  --br: 1em;
+  --br-card: .5rem;
+  --br_input: 1em;
+
+  --bs-header: 0px 3px 12px 0px var(--clr-secondary);
+  --bs-normal: 0px 31px 60px -24px rgba(0,0,0,0.75);
+  --bs-card: 0px 31px 60px -24px rgba(0,0,0,0.25);
+  --bs-map: 10px 3px 14px 0px rgba(0, 0, 0, 0.226);
+}
+
+
+/*-----------------Material Icons--------------*/
+
+.material-icons{
+  color: var(--clr-primary);
+  user-select: none;
+  background-color: #ffffffaa;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+}

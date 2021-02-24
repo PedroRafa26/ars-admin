@@ -24,3 +24,16 @@
 .NavbarButton button{
     background-color: #ffffff00;
 }
+
+.Navbar span {
+    margin-right: 2em;
+    cursor: pointer;
+    color: white
+}
+
+.Navbar_companyName{
+    flex-grow: 1;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1.8em;
+    color: white;
+}

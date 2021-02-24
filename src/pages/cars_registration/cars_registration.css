@@ -1,0 +1,31 @@
+.Form_container {
+  padding: 3em;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+
+.dynamic_form__container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch  ;
+}
+
+.dynamic_form__input__label {
+  color: var(--clr-background);
+  font-size: var(--fs-h4);
+}
+
+.dynamic_form__input__container{
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.dynamic_form__input__input{
+  color: white;
+}

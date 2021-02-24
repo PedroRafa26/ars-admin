@@ -1,13 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from '../context/UserContext'
 import "./styles/MainAdmin.css";
 
-const MainAdminListItem = ({name, parimpar}) => {
-	let empresaSelected;
+const MainAdminListItem = ({name, parimpar, uid}) => {
+
+	const history = useHistory();
+	const {userContextValue, setUserContextValue} = useContext(UserContext)
 
 	//TODO: Manejar el navegar enviando el uid
-	let navigate = item => {
-		empresaSelected = item;
-		console.log(empresaSelected);
+	let navigate = () => {
+		setUserContextValue({
+			uid: uid,
+   	  companyName: name,
+    	companeyLogoUrl: ""
+		});
+		history.push(`/menu/${uid}`)
 	};
 
 	// debugger;
@@ -15,7 +23,7 @@ const MainAdminListItem = ({name, parimpar}) => {
 	return (
 		<div
 			className={"MainAdmin-selection-item " + parimpar}
-			onClick={() => navigate(name)}
+			onClick={() => navigate()}
 		>
 			{name}
 		</div>

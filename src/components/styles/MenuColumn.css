@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .none{
@@ -20,6 +21,7 @@
 
 .focus{
   flex-grow: 13;
+  cursor: default;
 }
 
 .away{

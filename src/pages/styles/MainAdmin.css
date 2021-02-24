@@ -53,6 +53,7 @@
     align-items: center;
     color: white;
     font-size: 25;
+    cursor: pointer;
 }
 
 .par{

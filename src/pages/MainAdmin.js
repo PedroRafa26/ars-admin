@@ -84,17 +84,15 @@ const MainAdmin = () => {
 						<div className="MainAdmin-selection-list">
 							{/* <MainAdminList empresas={empresas}/> */}
 							{!loading &&
-								empresas.map(({ name, key }, index) => {
+								empresas.map(({ name, key, uid }, index) => {
 									let parimpar;
 									parimpar = index % 2 === 0 ? "par" : "impar";
-									{
-										/* debugger */
-									}
 									return (
 										<MainAdminListItem
 											key={key}
 											name={name}
 											parimpar={parimpar}
+											uid = {uid}
 										/>
 									);
 								})}

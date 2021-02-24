@@ -1,102 +1,91 @@
-import React from "react";
+import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import CarsSection from "./cars/CarsSection";
 import LogbookSection from "./logbook/LogbookSection";
 import PeopleSection from "./people/PeopleSection";
 import "./styles/MenuColumn.css";
 
-class MenuColumn extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            carStyle: "none",
-            peopleStyle: "none",
-            logbookStyle: "none",
-            assetsStyle: "none"
-        };
-    }
+const MenuColumn = () => {
+	const [carStyle, setCarStyle] = useState("none");
+	const [peopleStyle, setPeopleStyle] = useState("none");
+	const [logbookStyle, setLogbookStyle] = useState("none");
+	const [assetsStyle, setAssetsStyle] = useState("none");
 
-    carsSection() {
-        this.setState({
-            carStyle: "focus",
-            peopleStyle: "away",
-            logbookStyle: "farAway",
-            assetsStyle: "farFarAway"
-        });
-    }
+	function handleSelection(selection) {
+		switch (selection) {
+			case "car":
+				setCarStyle(() => "focus");
+				setPeopleStyle(() => "away");
+				setLogbookStyle(() => "farAway");
+				setAssetsStyle(() => "farFarAway");
+				break;
+			case "people":
+				setCarStyle(() => "away");
+				setPeopleStyle(() => "focus");
+				setLogbookStyle(() => "away");
+				setAssetsStyle(() => "farAway");
+				break;
+			case "logbook":
+				setCarStyle(() => "farAway");
+				setPeopleStyle(() => "away");
+				setLogbookStyle(() => "focus");
+				setAssetsStyle(() => "away");
+				break;
+			case "assets":
+				setCarStyle(() => "farFarway");
+				setPeopleStyle(() => "farAway");
+				setLogbookStyle(() => "away");
+				setAssetsStyle(() => "focus");
+				break;
+			default:
+				break;
+		}
+	}
 
-    peopleSection() {
-        this.setState({
-            carStyle: "away",
-            peopleStyle: "focus",
-            logbookStyle: "away",
-            assetsStyle: "farAway"
-        });
-    }
+	const history = useHistory();
 
-    logbookSection() {
-        this.setState({
-            carStyle: "farAway",
-            peopleStyle: "away",
-            logbookStyle: "focus",
-            assetsStyle: "away"
-        });
-    }
+	function handleAdd(type) {
+    history.push('/cars-add')
+  }
 
-    assetsSection() {
-        this.setState({
-            carStyle: "farFarAway",
-            peopleStyle: "farAway",
-            logbookStyle: "away",
-            assetsStyle: "focus"
-        });
-    }
 
-    render() {
-        let carStyle = this.state.carStyle;
-        let peopleStyle = this.state.peopleStyle;
-        let logbookStyle = this.state.logbookStyle;
-        let assetsStyle = this.state.assetsStyle;
-        return (
-            <div className="Menu-Container">
-                <div
-                    className={"column cars " + carStyle}
-                    onClick={this.carsSection.bind(this)}
-                >
-                    {carStyle === "focus" ? (
-                        <CarsSection />
-                    ) : (
-                        <h4>Vehiculos </h4>
-                    )}
-                </div>
-                <div
-                    className={"column people " + peopleStyle}
-                    onClick={this.peopleSection.bind(this)}
-                >
-                    {peopleStyle === "focus" ? (
-                        <PeopleSection />
-                    ) : (
-                        <h4>Personas</h4>
-                    )}
-                </div>
-                <div
-                    className={"column logbook " + logbookStyle}
-                    onClick={this.logbookSection.bind(this)}
-                >
-                    {logbookStyle === "focus" ? (
-                        <LogbookSection />
-                    ) : (
-                        <h4>Bitácora</h4>
-                    )}
-                </div>
-                <div
-                    className={"column assets " + assetsStyle}
-                    onClick={this.assetsSection.bind(this)}
-                >
-                    Activos
-                </div>
-            </div>
-        );
-    }
-}
+	return (
+		<div className="Menu-Container">
+			<div
+				className={"column cars " + carStyle}
+				onClick={()=>handleSelection("car")}
+			>
+				{carStyle === "focus" ? (
+					<>
+						<CarsSection />
+						<span className="material-icons" onClick={handleAdd}>
+							add
+						</span>
+					</>
+				) : (
+					<h4>Vehiculos </h4>
+				)}
+			</div>
+			<div
+				className={"column people " + peopleStyle}
+				onClick={()=>handleSelection("people")}
+			>
+				{peopleStyle === "focus" ? <PeopleSection /> : <h4>Personas</h4>}
+			</div>
+			<div
+				className={"column logbook " + logbookStyle}
+				onClick={()=>handleSelection("logbook")}
+			>
+				{logbookStyle === "focus" ? <LogbookSection /> : <h4>Bitácora</h4>}
+			</div>
+			<div
+				className={"column assets " + assetsStyle}
+				onClick={()=>handleSelection("assets")}
+			>
+				Activos
+			</div>
+		</div>
+	);
+};
 
 export default MenuColumn;

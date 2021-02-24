@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Auth from "../components/Auth";
 import { ArsUserId } from "../const";
-import MainMenu from "./MainMenu";
 import { useHistory } from "react-router-dom";
 import { AuthService } from "../apis/firebaseService";
-import Layout from "../components/Layout";
+import UserContext from '../context/UserContext'
+import UserAuthContext from '../context/UserAuthContext';
 
 const Main = () => {
 	const [user, setUser] = useState({});
@@ -12,6 +12,8 @@ const Main = () => {
 	const [password, setPassword] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [passwordError, setPasswordError] = useState("");
+  const {userContextValue, setUserContextValue} = useContext(UserContext)
+	const {setContextUser} = useContext(UserAuthContext);
 
 	let history = useHistory();
 
@@ -59,47 +61,24 @@ const Main = () => {
       console.log("Something happened", err);
       throw err;
 		}
-		// const { user, error } = await AuthService.SignInWithEmailAndPassword({
-		// 	email,
-		// 	password
-		// });
-		// debugger
-	};
-
-	// const signUp = () => {
-	//     clearErrors();
-	//     fire.auth()
-	//         .createUserWithEmailAndPassword(email, password)
-	//         .catch((err) => {
-	//             switch (err.code) {
-	//                 case "auth/email-already-in-use":
-	//                 case "auth/invalid-email":
-	//                     setEmailError(err.message);
-	//                     break;
-	//                 case "auth/weak-password":
-	//                     setPasswordError(err.message);
-	//                     break;
-	//             }
-	//         });
-	// };
-
-	// const logout = () => {
-	//     fire.auth().signOut();
-	// };
+	}
 
 	useEffect(() => {
 		AuthService.authPersistence(setUser);
-		// debugger;
+		setUserContextValue({
+			uid: "",
+			companyName: "",
+			companeyLogoUrl: ""
+		})
 		if (user.uid) {
-			// debugger;
-			console.log(user.uid === ArsUserId);
+			console.log(user);
+			// console.log(user.uid === ArsUserId);
 			let admin = user.uid === ArsUserId;
 			let route = admin ? "admin" : "menu/" + user.uid;
+			setContextUser(user);
 			history.push(route)
 		}
-		// debugger
-		// console.log(user);
-	}, [user.uid]);
+	}, [user, setContextUser, setUserContextValue, history]);
 
 	return (
 		<div>
